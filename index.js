@@ -44,10 +44,10 @@ mongoose.connect(DB, { useNewUrlParser: true })
 const app = new express()
 // Set express to use ejs as templating engine
 app.set('view engine', 'ejs')
-// Set views folder
+// Set views folder - always use path (encountered deployment problems)
 app.set('views', path.join(__dirname, 'views'))
 // Serve static files in public folder
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 // Parse request to json
 app.use(express.json())
 app.use(
